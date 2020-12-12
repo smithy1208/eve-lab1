@@ -1,4 +1,14 @@
-/interface bridge set [find name=br1] pvid={{ id }} protocol-mode=mstp
+# {{ name }}
+/int bridge vlan remove [find ]
+/int bridge port remove [find ]
+/int bridge remove [find name=br1]
+/int vlan remove [find]
+/ip addr remove [find]
+
+/interface bridge add frame-types=admit-only-vlan-tagged ingress-filtering=yes name=br1 protocol-mode=none vlan-filtering=yes
+{% for i in range(6) %}
+/interface bridge port add bridge=br1 frame-types=admit-only-vlan-tagged ingress-filtering=yes interface=ether{{ i }}
+{% endfor %}
 
 /interface bridge add name=lo0
 /ip address add address={{ loip }} interface=lo0
@@ -6,7 +16,7 @@
 /routing ospf instance set [ find default=yes ] router-id={{ loip }} redistribute-connected=as-type-2
 
 {% for vlan in vlans %}
-/interface bridge vlan add bridge=br1 vlan-ids={{ vlan.vid }} tagged={{ vlan.intf }}
+/interface bridge vlan add bridge=br1 vlan-ids={{ vlan.vid }} tagged={{ vlan.intf | join(',') }}
 
 {% if vlan.ip %}
 /interface vlan add name=ospf-{{ vlan.vid }} vlan-id={{ vlan.vid }} interface=br1
