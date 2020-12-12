@@ -67,7 +67,7 @@ def main2():
     for dev in devs:
         print("#" * 80)
         print(dev["name"])
-        conf = generate_config("templates/sw_vl.j2", dev)
+        conf = generate_config("templates/sw.j2", dev)
         if dev["name"] in ["SW2", "SW5"]:
             out = send_commands_ros(
                 host, dev["port"], [line.strip() for line in conf.splitlines()]

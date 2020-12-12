@@ -5,10 +5,12 @@
     - vid: 302
       intf: 
         - ether5
+        - br1
       ip: 10.70.254.33/30
     - vid: 402
       intf: 
         - ether2
+        - br1
       ip: 10.70.254.1/30
     - vid: 403
       intf: 
@@ -17,6 +19,7 @@
     - vid: 404
       intf: 
         - ether3
+        - br1
       ip: 10.70.254.5/30
     - vid: 405
       intf: 
@@ -25,6 +28,7 @@
     - vid: 412
       intf: 
         - ether4
+        - br1
       ip: 10.70.254.21/30
     - vid: 413
       intf: 
@@ -37,14 +41,17 @@
     - vid: 303
       intf: 
         - ether4
+        - br1
       ip: 10.70.254.37/30
     - vid: 304
       intf: 
         - ether5
+        - br1
       ip: 10.70.254.41/30
     - vid: 402
       intf: 
         - ether1
+        - br1
       ip: 10.70.254.2/30
     - vid: 403
       intf: 
@@ -54,6 +61,7 @@
     - vid: 406
       intf: 
         - ether3
+        - br1
       ip: 10.70.254.9/30
     - vid: 407
       intf: 
@@ -63,6 +71,7 @@
     - vid: 414
       intf: 
         - ether2
+        - br1
       ip: 10.70.254.25/30
     - vid: 415
       intf: 
@@ -76,14 +85,17 @@
     - vid: 305
       intf: 
         - ether4
+        - br1
       ip: 10.70.254.45/30
     - vid: 306
       intf: 
         - ether5
+        - br1
       ip: 10.70.254.49/30
     - vid: 406
       intf: 
         - ether1
+        - br1
       ip: 10.70.254.10/30
     - vid: 407
       intf: 
@@ -93,6 +105,7 @@
     - vid: 408
       intf: 
         - ether2
+        - br1
       ip: 10.70.254.14/30
     - vid: 411
       intf: 
@@ -102,6 +115,7 @@
     - vid: 416
       intf: 
         - ether3
+        - br1
       ip: 10.70.254.30/30
     - vid: 417
       intf: 
@@ -115,16 +129,19 @@
     - vid: 307
       intf:
         - ether3
+        - br1
       ip: 10.70.254.53/30
     - vid: 408
       intf:
         - ether2
+        - br1
       ip: 10.70.254.13/30
     - vid: 411
       intf: ether2,ether3
     - vid: 414
       intf:
         - ether1
+        - br1
       ip: 10.70.254.26/30
     - vid: 415
       intf:
@@ -137,10 +154,12 @@
     - vid: 308
       intf:
         - ether4
+        - br1
       ip: 10.70.254.57/30
     - vid: 404
       intf:
         - ether2
+        - br1
       ip: 10.70.254.6/30
     - vid: 405
       intf:
@@ -149,6 +168,7 @@
     - vid: 410
       intf:
         - ether3
+        - br1
       ip: 10.70.254.17/30
     - vid: 409
       intf:
@@ -157,6 +177,7 @@
     - vid: 416
       intf:
         - ether1
+        - br1
       ip: 10.70.254.29/30
     - vid: 417
       intf:
@@ -169,10 +190,12 @@
     - vid: 309
       intf:
         - ether3
+        - br1
       ip: 10.70.254.61/30
     - vid: 410
       intf:
         - ether2
+        - br1
       ip: 10.70.254.18/30
     - vid: 409
       intf:
@@ -181,6 +204,7 @@
     - vid: 412
       intf:
         - ether1
+        - br1
       ip: 10.70.254.22/30
     - vid: 413
       intf:
