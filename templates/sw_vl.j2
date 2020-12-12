@@ -1,0 +1,19 @@
+# {{ name }}
+/int bridge vlan remove [find ]
+/int bridge port remove [find ]
+/int bridge remove [find name=br1]
+/int vlan remove [find]
+
+{% for vlan in vlans %}
+/interface bridge add name=br-{{ vlan.vid }} protocol-mode=none
+
+{% for i in vlan.intf %}
+/interface vlan add name={{ i }}-{{ vlan.vid }} vlan-id={{ vlan.vid }} interface={{ i }}
+/interface bridge port add bridge=br-{{ vlan.vid }} interface={{ i }}-{{ vlan.vid }}
+{% endfor %}
+
+{% if vlan.ip %}
+/ip address set [find address="{{ vlan.ip }}"] interface=br-{{ vlan.vid }}
+{% endif %}
+
+{% endfor %}

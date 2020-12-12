@@ -1,0 +1,17 @@
+/interface bridge set [find name=br1] pvid={{ id }} protocol-mode=mstp
+
+/interface bridge add name=lo0
+/ip address add address={{ loip }} interface=lo0
+
+/routing ospf instance set [ find default=yes ] router-id={{ loip }} redistribute-connected=as-type-2
+
+{% for vlan in vlans %}
+/interface bridge vlan add bridge=br1 vlan-ids={{ vlan.vid }} tagged={{ vlan.intf }}
+
+{% if vlan.ip %}
+/interface vlan add name=ospf-{{ vlan.vid }} vlan-id={{ vlan.vid }} interface=br1
+/ip address add address={{ vlan.ip }} interface=ospf-{{ vlan.vid }}
+/routing ospf network add network={{ vlan.network }} area=backbone
+
+{% endif %}
+{% endfor %}

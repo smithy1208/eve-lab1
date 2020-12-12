@@ -1,0 +1,128 @@
+- name: SW1
+  port: 32769
+  loip: 10.70.255.1
+  vlans:
+    - vid: 302
+      intf: br1,ether5
+      ip: 10.70.254.33/30
+    - vid: 402
+      intf: br1,ether2
+      ip: 10.70.254.1/30
+    - vid: 403
+      intf: ether2,ether5
+    - vid: 404
+      intf: br1,ether3
+      ip: 10.70.254.5/30
+    - vid: 405
+      intf: ether3,ether5
+    - vid: 412
+      intf: br1,ether4
+      ip: 10.70.254.21/30
+    - vid: 413
+      intf: ether4,ether5
+- name: SW2
+  port: 32770
+  loip: 10.70.255.2
+  vlans:
+    - vid: 303
+      intf: br1,ether4
+      ip: 10.70.254.37/30
+    - vid: 304
+      intf: br1,ether5
+      ip: 10.70.254.41/30
+    - vid: 402
+      intf: br1,ether1
+      ip: 10.70.254.2/30
+    - vid: 403
+      intf: ether1,ether4,ether5
+    - vid: 406
+      intf: br1,ether3
+      ip: 10.70.254.9/30
+    - vid: 407
+      intf: ether3,ether4,ether5
+    - vid: 414
+      intf: br1,ether2
+      ip: 10.70.254.25/30
+    - vid: 415
+      intf: ether2,ether4,ether5
+- name: SW3
+  port: 32771
+  loip: 10.70.255.3
+  vlans:
+    - vid: 305
+      intf: br1,ether4
+      ip: 10.70.254.45/30
+    - vid: 306
+      intf: br1,ether5
+      ip: 10.70.254.49/30
+    - vid: 406
+      intf: br1,ether1
+      ip: 10.70.254.10/30
+    - vid: 407
+      intf: ether1,ether4,ether5
+    - vid: 408
+      intf: br1,ether2
+      ip: 10.70.254.14/30
+    - vid: 411
+      intf: ether2,ether4,ether5
+    - vid: 416
+      intf: br1,ether3
+      ip: 10.70.254.30/30
+    - vid: 417
+      intf: ether3,ether4,ether5
+- name: SW4
+  port: 32772
+  loip: 10.70.255.4
+  vlans:
+    - vid: 307
+      intf: br1,ether3
+      ip: 10.70.254.53/30
+    - vid: 408
+      intf: br1,ether2
+      ip: 10.70.254.13/30
+    - vid: 411
+      intf: ether2,ether3
+    - vid: 414
+      intf: br1,ether1
+      ip: 10.70.254.26/30
+    - vid: 415
+      intf: ether1,ether3
+- name: SW5
+  port: 32773
+  loip: 10.70.255.5
+  vlans:
+    - vid: 308
+      intf: br1,ether4
+      ip: 10.70.254.57/30
+    - vid: 404
+      intf: br1,ether2
+      ip: 10.70.254.6/30
+    - vid: 405
+      intf: ether2,ether4
+    - vid: 410
+      intf: br1,ether3
+      ip: 10.70.254.17/30
+    - vid: 409
+      intf: ether3,ether4
+    - vid: 416
+      intf: br1,ether1
+      ip: 10.70.254.29/30
+    - vid: 417
+      intf: ether1,ether4
+- name: SW6
+  port: 32774
+  loip: 10.70.255.6
+  vlans:
+    - vid: 309
+      intf: br1,ether3
+      ip: 10.70.254.61/30
+    - vid: 410
+      intf: br1,ether2
+      ip: 10.70.254.18/30
+    - vid: 409
+      intf: ether2,ether3
+    - vid: 412
+      intf: br1,ether1
+      ip: 10.70.254.22/30
+    - vid: 413
+      intf: ether1,ether3
