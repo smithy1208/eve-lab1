@@ -8,19 +8,48 @@ import yaml
 from jinja2 import Environment, FileSystemLoader
 
 
-def send_commands_ros(host, port, commands, cr=b"\n\r"):
-    t = telnetlib.Telnet(host, port=port)
-    t.write(cr)
-    sleep(0.5)
-    out = t.read_very_eager().decode().strip()
+def send_commands_ros(host, port, commands, cr=b"\n\r", fast_pause=0.5):
     output = ""
-    if out[-1] == ">":
-        print(f"{port} is cool")
-        for command in commands:
-            t.write(command.encode() + cr)
-            sleep(1)
-            output += t.read_very_eager().decode().strip() + "\n"
-    t.close()
+    with telnetlib.Telnet(host, port=port) as t:
+        t.write(cr)
+        sleep(fast_pause)
+        out = t.read_very_eager().decode().strip()
+        if out[-1] == ">":
+            print(f"{port} is cool")
+            for command in commands:
+                t.write(command.encode() + cr)
+                sleep(fast_pause)
+                output += t.read_very_eager().decode().strip() + "\n"
+    return output
+
+
+def send_commands_ios(host, port, commands, config=False, cr=b"\r\n", fast_pause=0.5):
+    output = ""
+    with telnetlib.Telnet(host, port=port) as t:
+        sleep(fast_pause)
+        lastline = t.read_very_eager().decode().splitlines()[-1]
+        if "dialog" in lastline:
+            t.write(b"no" + cr)
+            sleep(fast_pause)
+        else:
+            t.write(cr)
+            sleep(fast_pause)
+        lastline = t.read_very_eager().decode().splitlines()[-1]
+        if lastline[-1] == ">":
+            print(f"{port} is cool")
+            t.write(b"enable" + cr)
+            sleep(fast_pause)
+        elif lastline[-1] == "#":
+            print(f"{port} in enable")
+            if config:
+                t.write(b"conf t" + cr)
+                sleep(fast_pause)
+            for command in commands:
+                t.write(command.encode() + cr)
+                sleep(fast_pause)
+                output += t.read_very_eager().decode().strip() + "\n"
+            if config:
+                t.write(b"end" + cr)
     return output
 
 
@@ -87,4 +116,5 @@ if __name__ == "__main__":
         "/int bridge port add bridge=br1 interface=ether6",
     ]
     # main()
-    main2()
+    # main2()
+    host = "10.104.10.200"
