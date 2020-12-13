@@ -20,6 +20,7 @@ def send_commands_ros(host, port, commands, cr=b"\n\r"):
             t.write(command.encode() + cr)
             sleep(1)
             output += t.read_very_eager().decode().strip() + "\n"
+    t.close()
     return output
 
 
